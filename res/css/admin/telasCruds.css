@@ -1,0 +1,1015 @@
+/* icon loading css*/
+
+.c-loader {
+  animation: is-rotating 1s infinite;
+  border: 6px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: #51d4db;
+  height: 50px;
+  width: 50px;
+}
+
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+#divIconLoading{
+	align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  transform: scale(5);
+
+}
+/*end icon loading css*/
+
+
+
+
+
+#divBtVoltar{
+	padding-top:10px;
+	padding-left:20px;
+	display: flex;
+	flex-direction: row;
+
+}
+
+
+
+#titleList {
+	background: #B8AEA4;
+	border-radius: 1em;
+	padding: 15px;
+
+}
+
+/*button voltar para lista*/
+
+#btlista{
+	
+	width: 100px;
+	padding: 10px;
+	height:50px;
+	border: 1px solid black;
+	border-radius: 2em;
+	background: grey;
+	color: white;
+	
+	
+}
+
+
+
+
+
+#btlista:hover{
+
+
+	background: #6c6cf7;
+	
+	
+}
+/* end button voltar para lista*/
+
+
+
+
+
+
+/*div pesquisa*/
+ .divsearch {
+ 	background: #6c6cf7;
+ 	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: left;
+	align-content: left;
+	
+}
+
+
+
+
+/*buttons search*/
+
+#inputbusca {
+	width:200px;
+	
+}
+
+#btbusca {
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: grey;
+	color: white;
+	
+}
+
+
+
+
+#btbusca:hover {
+
+	
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: #6c6cf7;
+	color: white;
+
+}
+/*buttons search*/
+
+/*fim div pesquisa*/
+
+
+
+#tb {
+	margin-top: 10px;
+	border: 1px solid black;
+	background:#6c6cf7;
+
+
+}
+
+#tb th{
+
+	border: 1px solid black;
+	padding: 10px;
+
+
+}
+
+
+#tb td{
+	background:white;
+	border: 1px solid black;
+	padding: 10px;
+
+}
+
+
+
+.tela_lista {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+
+}
+
+/*link para cadastro */
+#insertLink{
+	margin-top:10px;
+	padding: 2px;
+	border: 1px solid black;
+	background: grey;
+	color: white;
+	border-radius: 1em;
+	text-decoration: none;
+}
+
+#insertLink:hover{
+
+	padding: 2px;
+	border: 1px solid black;
+	background: #6c6cf7;
+	color: black;
+	border-radius: 2em;
+	text-decoration: none;
+}
+
+/*link para cadastro */
+
+/*link para alterar */
+
+#updateLink{
+
+	padding: 8px;
+	border: 1px solid black;
+	background: grey;
+	color: white;
+	border-radius: 1em;
+	text-decoration: none;
+	margin-left: 20px;
+}
+
+
+#updateLink:hover{
+
+	padding: 8px;
+	border: 1px solid black;
+	background: #6c6cf7;
+	color: black;
+	border-radius: 2em;
+	text-decoration: none;
+	margin-left: 20px;
+}
+
+/*link para alterar */
+
+
+/*link para delete */
+#deleteLink{
+
+	padding: 8px;
+	border: 1px solid black;
+	background: red;
+	color: white;
+	border-radius: 1em;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+#deleteLink:hover{
+
+	padding: 8px;
+	border: 1px solid black;
+	background: #6c6cf7;
+	color: black;
+	border-radius: 2em;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+/*link para delete */
+
+
+
+
+
+/*list pagination*/
+.ulpagination{
+	border: 1px solid black;
+	list-style: none;
+	background: #6c6cf7;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	grid-gap: 10px;
+	
+
+}
+
+.ulpagination a{
+	padding:5px ;
+	border-radius:1em;
+	background: grey;
+	color: white;
+	text-decoration: none;
+}
+
+
+#conselhos{
+	width: 200px;
+
+}
+
+/*list pagination*/
+
+
+
+
+
+
+
+/*aqui o css dos form legislacao,competence,user,informative,conselhos*/
+
+
+
+/*div e form user*/
+
+
+.divformUser{
+	
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+
+
+}
+
+.formUser{
+
+	padding: 10px;
+	width: 400px;
+	background: #6c6cf7;
+	
+	
+}
+
+/*end div e form user*/
+
+/*inputs user */
+
+.inputsUser{
+
+	border: 1px solid green;
+	width: 100%;
+	height: 30px;
+
+}
+/* end inputs user */
+
+
+
+/*button cadastrar user*/
+#btcadUser{
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: grey;
+	color: white;
+
+}
+
+
+
+
+
+#btcadUser:hover{
+
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: #6c6cf7;
+	color: white;
+
+}
+/*button cadastrar user*/
+
+/* div dos checkbox */
+
+
+.contentcheckboxConselhos{
+	padding-left: 20px;
+	background: white;
+	border: 1px solid black;
+}
+
+
+
+.line{
+ 
+ display: flex;
+  flex-direction:row;
+  align-content: center;
+  align-items: center;
+
+}
+
+
+/*end div dos checkbox*/
+
+
+
+
+
+
+/*modal senha*/
+
+
+
+
+#btopenModalSenha{
+		padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: grey;
+	color: white;
+}
+
+
+#btopenModalSenha:hover{
+
+
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: #6c6cf7;
+	color: white;
+
+}
+
+
+
+  #containerModalSenha {
+  position: absolute;
+  width: 500px;
+  height: 400px;
+  /*font-family: Arial, Helvetica, sans-serif;*/
+  border: 2px solid black;
+  background: #fff; /*rgba(0,0,0,0.8);*/
+  z-index:99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  
+  
+}
+
+
+
+#divtitlemodalSenha{
+		background: #6c6cf7;
+		color: #fff;
+	 display: flex;
+	 padding: 2px;
+  flex-direction:column;
+  align-content: center;
+  align-items: center;
+
+
+
+}
+
+
+#contentmodalSenha{
+	margin-top: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 190px;
+
+	
+}
+
+
+#idFormUserPass{
+	padding-top:10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border: 1px solid black;
+		background: #6c6cf7;
+}
+
+
+
+
+
+#btConcluirSenha{
+  margin-top: 30px;
+   margin-left: 120px;
+   border-radius: 1em;
+   background: grey;
+   color: white;
+   padding: 10px;
+}
+
+
+
+#btConcluirSenha:hover{
+  margin-top: 30px;
+   margin-left: 120px;
+   border-radius: 1em;
+   background: #6c6cf7;
+   color: white;
+   padding: 10px;
+}
+
+
+
+#btCancelarSenha{
+  margin-top: 30px;
+   border-radius: 1em;
+   background: grey;
+   color: white;
+   padding: 10px;
+}
+
+
+
+#btCancelarSenha:hover{
+  margin-top: 30px;
+   border-radius: 1em;
+   background: #6c6cf7;
+   color: white;
+   padding: 10px;
+}
+
+
+
+/*end modal senha*/
+
+
+/*end modals*/
+
+
+/*user*/
+
+
+
+
+
+
+
+/*informative*/
+
+
+/*form  informative*/
+
+
+.divformInfo{
+	
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+
+
+}
+
+.formInfo{
+
+	padding: 10px;
+	width: 600px;
+	background: #6c6cf7;
+	
+	
+}
+/*form  informative*/
+
+/*inputs informative */
+
+#title{
+
+	border: 1px solid black;
+	width: 100%;
+	height: 30px;
+
+}
+
+#dtcontent{
+	border: 1px solid black;
+	width: 200px;
+}
+
+#content_text{
+	border: 1px solid black;
+	width: 100%;
+	resize: none;
+	height: 200px; 
+
+}
+
+/* end inputs informative */
+
+/*button cad  informative*/
+
+
+#btcadInfo{
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: grey;
+	color: white;
+	
+}
+
+
+
+#btcadInfo:hover{
+
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: #6c6cf7;
+	color: white;
+	
+}
+/* end button cad informative*/
+
+
+#btcadResp{
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: grey;
+	color: white;
+	
+}
+
+
+
+#btcadResp:hover{
+
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: #6c6cf7;
+	color: white;
+	
+}
+/* end button cad informative*/
+
+
+
+/*div show image informative*/
+#image-previewInfo{
+
+	border: 1px solid black;
+	max-width:200px;
+	width:100%;
+	max-height:290px;
+	height:100px
+
+}
+/*div show image informative*/
+
+/**informatice/
+
+
+
+
+
+
+/*form   competences*/
+
+
+.divformComp{
+
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+
+
+}
+
+.formComp{
+	
+	padding: 10px;
+	width: 600px;
+	background: #6c6cf7;
+	
+	
+}
+
+
+/*inputs competences */
+
+#competence{
+	border: 1px solid green;
+	width: 100%;
+	resize: none;
+	height: 200px; 
+
+}
+
+
+
+/* end inputs competences */
+
+/*button cad   competences*/
+
+
+#btcadComp{
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: grey;
+	color: white;
+
+}
+
+
+
+#btcadComp:hover{
+
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: #6c6cf7;
+	color: white;
+
+}
+/* end button cad Legisrmative*/
+/*end form competences */
+
+
+
+
+
+
+
+/*form  conselho*/
+
+
+.divformCons{
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+
+
+}
+
+.formCons{
+	padding: 10px;
+	width: 600px;
+	background: #6c6cf7;
+	
+	
+}
+
+
+/*inputs conselho */
+
+#name_conselho{
+	border: 1px solid green;
+	width: 100%;
+	height: 30px;
+
+
+}
+
+#initials{
+	margin-top:10px;
+	border: 1px solid green;
+	width: 150px;
+	height: 30px;
+
+}
+
+#objective{
+	border: 1px solid green;
+	width: 100%;
+	resize: none;
+	height: 200px; 
+
+}
+
+
+
+/* end inputs competences */
+
+/*button cad   competences*/
+
+
+#btcadCons{
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: grey;
+	color: white;
+
+}
+
+
+
+#btcadCons:hover{
+
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: #6c6cf7;
+	color: white;
+}
+/* end button cad conselho*/
+/*end  conselho*/
+
+
+
+
+
+/*form  Legislacao*/
+
+
+.divformLegis{
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+
+
+}
+
+.formLegis{
+	padding: 10px;
+	width: 600px;
+	background: #6c6cf7;
+	
+	
+}
+
+
+/*inputs Legislacao */
+
+
+#legislacao{
+	border: 1px solid green;
+	width: 100%;
+	resize: none;
+	height: 200px; 
+
+}
+
+
+
+/* end inputs Legislacoa */
+
+/*button cad  Legislacao*/
+
+
+#btcadLegis{
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: grey;
+	color: white;
+
+}
+
+
+
+#btcadLegis:hover{
+
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: #6c6cf7;
+	color: white;
+
+}
+/* end button cad Legislacao*/
+
+/*end form  Legislacao*/
+
+
+
+/*conselhos*/
+
+/*form  conselhos*/
+
+
+.divformCons{
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+
+
+}
+
+.formCons{
+	padding: 10px;
+	width: 600px;
+	background: #6c6cf7;
+		
+}
+
+/*end form  conselhos*/
+
+/*inputs conselhos */
+
+#name_conselho{
+	border: 1px solid green;
+	width: 100%;
+	height: 30px;
+
+
+}
+
+
+#initials{
+	margin-top:10px;
+	border: 1px solid green;
+	width: 150px;
+	height: 30px;
+
+}
+
+#objective{
+	border: 1px solid green;
+	width: 100%;
+	resize: none;
+	height: 200px; 
+
+}
+
+
+#address{
+	border: 1px solid green;
+	width: 100%;
+	height: 30px;
+
+
+}
+
+
+#zipcode{
+	margin-top:10px;
+	border: 1px solid green;
+	width: 150px;
+	height: 30px;
+	
+
+}
+
+#phones{
+	border: 1px solid green;
+	width: 100%;
+	height: 30px;
+
+
+}
+
+#email{
+	border: 1px solid green;
+	width: 100%;
+	height: 30px;
+
+
+}
+
+
+
+
+
+/* end inputs conselhos */
+
+/*button cad   conselhos*/
+
+
+#btcadCons{
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: grey;
+	color: white;
+	
+}
+
+
+
+#btcadCons:hover{
+
+	margin-top: 10px;
+	width: 100px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 1em;
+	background: #6c6cf7;
+	color: white;
+
+}
+/* end button cad conselhos*/
+/*end  conselhos*/
+
+
+
+
+
+
+
+
+
+

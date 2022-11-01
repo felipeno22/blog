@@ -1,0 +1,58 @@
+
+
+<div id="divBtVoltar">
+<input type="button" id="btlista" name="idlista"  value=" voltar" onclick="voltarLista('blogs')" />
+
+
+
+</div>
+
+<br>
+
+
+<div class="divformInfo">
+
+
+<form  id="idFormInfo" name="idFormInfo"  onsubmit="return insert_update_blog('update')"  class="formInfo" action="/updateBlog/:idblog" method="post" enctype="multipart/form-data">
+		
+
+
+
+	<fieldset>
+		
+		<legend>Alterar Blog </legend>
+
+
+  {if="$error!= '' "}
+  	{if="$error== 'deu certo' "}
+  			<div class="alert alert-success" role="alert">Blog alterada com sucesso!!!</div>
+  	{else}
+  			<div class="alert alert-danger" role="alert">{$error}</div>
+  	{/if}		
+ {else}
+		 <div> </div>
+ {/if}	
+			
+
+			<input type="text" hidden  id="idblog" name="idblog"  value="{$blog.idblog}">
+
+			<label>Nome:</label>
+			<input type="text" id="title" name="title"  value="{$blog.name_blog}" maxlength="64" required><br>
+
+
+
+			<label>Data de criação :</label>
+			 <input type="date" id="dtcontent" name="dtcontent" value="{$blog.dtblog}" disabled><br>
+
+			
+			<input type="text" hidden  id="iduser" name="iduser" value="{$blog.iduser}">
+			
+
+
+	</fieldset>
+
+	
+	<input id='btcadInfo' type="submit" value="Alterar">
+
+
+</form>

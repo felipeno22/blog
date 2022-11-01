@@ -1,0 +1,876 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog</title>
+
+
+ <!--bootstrap-->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--end bootstrap-->
+
+
+
+ <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<style>
+
+
+
+    body{
+            padding-left:100px;
+            padding-right:100px;
+            padding-top:10px;
+            padding-bottom: 10px;
+            font: normal 10pt Arial;
+            border: 2px solid black;
+
+        }
+
+
+    #header{
+        background-color: #6c6cf7;
+    }
+
+
+
+    #divTitleDate{
+
+        display:flex;
+        flex-direction:row;
+        grid-gap:1em;
+
+
+    }
+
+    #title{
+        color:hsl(236, 90%, 61%);
+        font: normal 25pt Arial;
+       
+
+    }
+
+
+
+    #divDate small{
+        height:50%
+
+    }
+
+    #divDate div{
+        height:50%
+
+    }
+
+    #div_content{
+        padding:10px;
+        border: 1px solid black;
+
+    }
+
+    .content{
+
+        background-color:white;
+        padding: 5px;
+        border:1px solid black;
+        box-shadow: 5px 10px #888888;
+
+    }
+
+
+ 
+
+
+    p{
+
+        color: gray;
+    }
+
+    footer{
+            background-color: #6c6cf7;
+            padding: 5px;
+    }
+
+
+    footer   p,a{
+
+color: white;
+font-size: 12pt;
+}
+
+
+    #div_footer{
+
+       
+        display: flex;
+        flex-direction: row;
+       
+
+    }
+
+
+    #div_footer #div_img_footer{
+
+       padding: 5px;
+       
+    }
+
+
+    #div_footer #div_quem_sou_footer{
+
+      padding:5px;
+    }
+
+
+    #text_content{
+        display:flex;
+        flex-direction:row;
+        
+
+
+    }
+
+
+    #img_blog{
+
+            width:200px;
+            border: 1px solid blue;
+            box-shadow: 3px 3px 3px;
+
+
+    }
+
+    #text_blog{
+        width:95%;
+        padding: 15px;
+        color: blue;
+        font: bold 10pt Arial;
+
+    }
+
+    #icon_text_blog{
+        padding:10px;
+        text-align: center;
+        border-radius: 30%;
+        color: blue;
+        font: bold 16pt Arial;
+        box-shadow: 3px 3px #888888;
+        height:60px;
+
+        width:5%;
+
+    }
+	
+	
+	 .content span{
+        background-color: grey;
+        color: white;
+        font-style: italic;
+        padding: 5px;
+
+    }
+	
+	 .content a {
+        font: normal 10pt Arial;
+        color: blue;
+
+    }
+
+	
+   .content a:hover {
+        text-decoration: none;
+        font: normal 12pt Arial;
+        background-color: aliceblue;
+
+    }
+
+    .content h3{
+        color:hsl(236, 90%, 61%);
+        font: bold 15pt Arial;
+
+    }
+
+    .content:hover h3 {
+
+        color: gray;
+        
+
+    }
+
+    .content:hover #text_blog{
+        color: gray;
+    }
+
+
+    .content:hover #icon_text_blog{
+        
+        background-color: gray;
+    }
+
+     #linkHeader:hover{
+background-color: white;
+color: #6c6cf7;
+
+    }
+
+
+
+    small{
+        background-color: grey;
+        color: white;
+        font-style: italic;
+        padding: 5px;
+
+    }
+
+    
+
+
+    p{
+
+color: gray;
+}
+
+    .comment{
+
+        padding-left:5px;
+    }
+
+    .comment p{
+        font: bold 10pt Arial;
+
+    }
+
+    .comment a{
+            color: #6c6cf7;
+
+    }
+
+
+
+    #add_comments{
+
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    .div_comment{
+        display: flex;
+        flex-direction: row;
+        box-shadow: 3px 3px black;
+        padding:10px;
+
+    }
+
+
+#input_comment{
+
+    padding:5px;
+    border:none;
+    border-bottom: 1px solid black;
+    width:95%;
+}
+
+
+ #input_comment:focus{
+  outline-style: none;
+
+}
+
+
+#name{
+padding:5px;
+border:none;
+width: 100%;
+border-bottom: 1px solid black;
+
+
+}
+
+#name:focus{
+  outline-style: none;
+
+}
+
+
+
+
+
+.resp{
+    border: 1px solid blue;
+overflow-y: scroll;
+height:200px;
+width:100%;
+padding:10px;
+
+
+}
+
+
+.lbltotalresp {
+    color:blue;
+    border-bottom:1px solid blue;
+
+}
+
+.lbltotalresp:hover{
+    color: purple;
+    font: bold 12pt Arial;
+    border-bottom: 1px solid purple;
+
+}
+
+
+.div_insert_respcomment{
+box-shadow: 3px 3px black;
+padding:10px;
+
+}
+
+
+.add_respcomments{
+display: flex;
+flex-direction: row;
+
+}
+
+.div_img_add_resp{
+background-color:white;
+width:5%;
+text-align: center;
+}
+
+.div_img_add_resp img{
+border-radius: 25px;
+border: 1px solid blue;
+
+}
+
+
+
+#divimgaddcomm{
+
+    background-color:white;
+    width:5%;
+    text-align: center;
+}
+
+
+
+
+#imgcomm{
+    border-radius: 25px; 
+    border: 1px solid blue;
+    width: 100%
+}
+
+
+#icon_user_comment img{
+    border-radius: 20px;
+    border: 1px solid blue;
+    width:25px;
+
+}
+
+
+#img_comm_msg{
+
+    border-radius: 20px;
+    width: 25px;
+}
+
+
+
+#container_quem_sou{
+display: flex;
+flex-direction: row;
+align-content:center;
+border:1px solid black;
+background: #EEEEEE;
+}
+
+#div_quem_sou1{
+border:1px solid black;
+width:15%;
+padding:5px;
+}
+
+#div_quem_sou2{
+border:1px solid black;
+width:85%;
+padding:10px;
+}
+
+
+/*pagination*/
+
+
+    #container_pagination{
+        display:flex;
+        flex-direction:row;
+        padding:10px;
+
+    }
+
+    #div_pagi_left{
+       
+        width: 35%;
+          
+    }
+
+    #div_pagi_right{
+       
+        width: 35%;
+         
+    }
+
+
+   #_home_page{
+        width:30%;
+        display: flex;
+        flex-direction: row;
+        padding-top: 10px;
+        text-align: center;
+        background:#6c6cf7;
+
+       
+    }
+
+    #_home_page strong{
+    padding:10px;
+    background-color: #6c6cf7;
+
+    }
+
+
+    #_home_pageinit{
+       
+       width:10%;
+       background-color: #6c6cf7;
+
+    }
+
+
+    #_home_pageinit strong a {
+        text-decoration: none; 
+        color: white;
+        
+    }
+
+
+    #_home_pageinit strong a:hover {
+        text-decoration: none; 
+        color: gray;
+        background-color: none;
+
+        
+    }
+
+
+
+.ulpagination{
+   
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    grid-gap:0.2em;
+
+}
+
+.ulpagination a{
+    padding:5px ;
+    border-radius:1em;
+    background: grey;
+    color: white;
+    text-decoration: none;
+}
+   
+
+.ulpagination a:hover{
+    padding:5px ;
+    border-radius:1em;
+    background: green;
+    color: white;
+    text-decoration: none;
+}
+   
+/* end pagination*/
+
+
+
+
+
+
+#div_img_quem_sou {
+padding:10px;
+align-content:center;
+width:100%;
+background:#6c6cf7;
+border: 1px solid black;
+}
+/*media query for responsive*/
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+
+    #text_content{
+        display:flex;
+        flex-direction:column;
+		align-content:center;
+		align-items:center;
+	
+       
+
+    }
+
+#text_blog{
+        width:100%;
+        padding: 5px;
+        color: blue;
+        font: bold 7pt Arial;
+
+    }
+	
+ #icon_text_blog{
+        padding:10px;
+        text-align: center;
+        border-radius: 30%;
+        color: blue;
+        font: bold 16pt Arial;
+        box-shadow: 3px 3px #888888;
+
+        width:50%;
+
+    }
+
+
+.content h3{
+        color:hsl(236, 90%, 61%);
+        font: bold 10pt Arial;
+
+    }
+	
+	
+	
+
+
+#idpcomment{
+    font:  normal 7pt Arial;    
+}
+
+#name{
+padding:5px;
+border:none;
+border-bottom: 1px solid black;
+font:  normal 7pt Arial;
+width: 100%;
+}
+
+
+#imgcomm{
+     border-radius: 25px; 
+    border: 1px solid blue;
+    width: 50%
+}
+
+
+
+
+#icon_user_comment img{
+    border-radius: 20px;
+    width:50%;
+}
+
+#img_comm_msg{
+
+    border-radius: 20px;
+    width: 50%;
+}
+
+
+
+    #divTitleDate{
+
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        content: center;
+    }
+
+     #title{
+        color:hsl(236, 90%, 61%);
+        font: normal 12pt Arial;
+       
+
+    }
+
+    
+    #divDate small{
+        height:100%
+
+    }
+
+    #divDate div{
+        height:0%
+
+    }
+  
+
+
+    
+    #img_blog{
+
+            width:100%;
+            border: 1px solid blue;
+            box-shadow: 3px 3px 3px;
+
+
+    }
+
+
+
+     #div_footer{
+
+       
+        display: flex;
+        flex-direction: column;
+        font:  normal 7pt Arial;
+       
+
+    }
+
+
+    #title_comments{
+        font:  bold 10pt Arial;
+    }
+
+   #add_comments{
+
+        display: flex;
+        font:  normal 7pt Arial;
+        flex-direction: column;
+    }
+
+
+    #add_comments div{
+
+            width:100%;
+    }
+
+       #add_comments input[type="text"]{
+                width: 100%;
+       } 
+
+ .div_comment{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        box-shadow: 3px 3px black;
+        padding:10px;
+
+    }
+
+
+
+ .comment{
+
+        padding-left:0px;
+    }
+
+    .comment p,a{
+        font: bold 7pt Arial;
+
+    }
+
+
+
+.resp{
+    border: 1px solid blue;
+overflow-y: scroll;
+width:140px;
+height:200px;
+
+
+    
+}
+
+
+.div_insert_respcomment{
+box-shadow: 3px 3px black;
+padding:5px;
+font: normal 7pt Arial;
+
+}
+
+
+.add_respcomments{
+display: flex;
+flex-direction: column;
+
+}
+
+
+.div_img_add_resp{
+background-color:white;
+width:60%;
+align-items: center;
+align-content: center;
+}
+
+/*pagition*/
+
+#container_pagination{
+        display:flex;
+        flex-direction:row;
+        padding:0px;
+
+    }
+
+
+ #div_pagi_left{ 
+        width: 0%;
+          
+    }
+
+    #div_pagi_right{
+       
+        width: 0%;
+    }
+
+
+   #_home_page{
+        width:100%;
+        background:#6c6cf7;
+
+       
+    }
+
+
+
+.ulpagination{
+   
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    grid-gap:0.1em;
+
+}
+
+.ulpagination a{
+    padding-left:2px ;
+    border-radius:1em;
+    background: grey;
+    color: white;
+    text-decoration: none;
+}
+   
+
+.ulpagination a:hover{
+    padding-left:2px ;
+    border-radius:1em;
+    background: green;
+    color: white;
+    text-decoration: none;
+}
+
+
+ #_home_pageinit{
+       
+       width:50%;
+       padding:5px;
+
+    }
+
+/*end pagination*/
+
+
+
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+   
+#container_quem_sou{
+display: flex;
+flex-direction: column;
+align-content:center;
+border:1px solid black;
+background: #EEEEEE;
+}
+
+#div_quem_sou1{
+border:1px solid black;
+width:100%;
+padding:5px;
+}
+
+#div_quem_sou2{
+border:1px solid black;
+width:100%;
+padding:10px;
+}
+
+
+
+
+#div_img_quem_sou {
+padding:10px;
+align-content:center;
+width:100px;
+background:#6c6cf7;
+border: 1px solid black;
+}
+
+
+
+}
+
+
+    
+
+</style>
+
+</head>
+<body>
+    
+        
+    <!-Aqui o header->  
+    <header id="header">
+        <nav class="navbar navbar-expand-md navbar-light">
+           
+
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample04" style="color: white;" >
+                <h4>Bloguinho</h4>
+
+                <ul class="navbar-nav mr-auto">
+
+                </ul>   
+                <ul class="navbar-nav "  >
+    
+                    <li  class="nav-item"  ><a  style="color: white;" id='linkHeader' href="/" class="nav-link">Assuntos</a></li>
+                    <li class="nav-item" > <a   style="color: white;" id='linkHeader' href="/quem_sou" class="nav-link" >Quem sou</a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+    </header>   
+

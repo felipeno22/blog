@@ -1,0 +1,82 @@
+
+<div id="divBtVoltar">
+<input type="button" id="btlista" name="idlista"  value=" voltar" onclick="voltarParaPainel()" />
+
+<div style="width:400px"></div>
+ 
+ <h2 id="titleList">
+    Lista de blogs
+  </h2>
+
+
+</div>
+
+<br>
+
+<div  class="tela_lista">
+
+
+ 
+
+   <div class="divsearch">
+                <form id="formFilter" action='/blogs'>
+                  
+                    <label for="inputbusca">Descrição</label>
+                    <input  id="inputbusca" type="text" name="search"  placeholder="buscador" value="{$search}">
+                    
+                    <label  for="dtiniinfo" >De:</label>
+                    <input  type="date" id="dtiniinfo" name="dtiniinfo" value="{$dtini}" >
+                    
+                    <label  for="dtfinalinfo" >Até:</label>
+                    <input  type="date" id="dtfinalinfo" name="dtfinalinfo"  value="{$dtfim}">
+                    
+
+                    <button id="btbusca" type="submit" ><i class="fa fa-search">buscar</i></button>
+                    
+                  
+                </form>
+     </div>  
+
+   
+<input  id="inputTotalPages" type="text"   hidden value="{$totalPages}">
+   
+  <a id="insertLink" href="/blog/insert">Criar Blog</a>
+  
+
+<!-- Main content -->
+
+ <div id='divIconLoading'>
+   <div class="c-loader"></div>  
+
+ </div> 
+
+              <table id="tb" >
+                <thead>
+                  <tr>
+                    <th hidden>ID</th>
+                    <th  style="width:250px">Nome</th>
+                    <th style="width:100px">Data</th>
+                     <th hidden>iduser</th>
+                    <th >Opções</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   <!--sem dados, agora alimenta via ajax-->
+                </tbody>
+              </table>
+
+              
+                <!-- /.box-body -->
+             <div class="divpagination">
+              <ul class="ulpagination">
+                <!--paginacao, agora via ajax-->
+              </ul>
+            </div>
+
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+  <script  src="../res/jqueryAjax/blogsAdmCrudJqueryAjax.js" ></script>

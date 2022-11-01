@@ -1,0 +1,161 @@
+
+<div id="divBtVoltar">
+<input type="button" id="btlista" name="idlista"  value=" voltar" onclick="voltarLista('users')" />
+
+
+
+</div>
+
+<br>
+
+
+
+<div id="iddivformUser" class="divformUser">
+
+
+<!--modal alterar senha-->
+<div  id="containerModalSenha"   >
+  <!-- conteúdo do modal aqui -->
+  
+  
+
+ <div id="divtitlemodalSenha">
+ 		<h3>Alterar Senha:</h3>
+ 	
+
+ </div>	
+
+
+ 			
+ 
+  
+ 
+   
+<div id="contentmodalSenha" >
+  
+			 		
+<form id="idFormUserPass" name="idFormUserPass"  onsubmit="return update_password()" action="/updatepassword/{$user.iduser}" method="POST" >
+	<input type="text" id="iduser" name="iduser" hidden value="{$user.iduser}"/>
+			<label>Nova Senha:</label>
+			<input class="inputsUser" type="text" id="despasswordnovo" name="despasswordnovo" maxlength="50" required /><br>
+
+			<label>Confirme Nova Senha:</label>
+			<input class="inputsUser" type="text" id="despasswordnovoconf" name="despasswordnovoconf" maxlength="50" required /><br>
+
+	
+        <input type="submit" id="btConcluirSenha"   name="btConcluirSenha" value="CONCLUIR" />
+        <input  type="button" id="btCancelarSenha"   name="btCancelarSenha" value="CANCELAR" onclick="close_modalSenha()" />
+</form>     
+
+</div>
+</div>
+
+<!--end modal alterar senha-->
+
+
+
+
+
+
+<form  id="idFormUser" name="idFormUser"  class='formUser'  onsubmit="return insert_update('update')" action="/update/:iduser" method="post">
+	
+
+
+	<fieldset>
+		
+		<legend>Alterar Usuário</legend>
+
+
+
+
+	
+  {if="$error!= '' "}
+  	{if="$error== 'deu certo' "}
+  			<div class="alert alert-success" role="alert">Usuário alterado com sucesso!!!</div>
+  	{else}
+  			<div class="alert alert-danger" role="alert">{$error}</div>
+  	{/if}		
+ {else}
+		 <div> </div>
+ {/if}	
+
+
+	 {if="$errorPass!= '' "}
+  	{if="$errorPass== 'senha alterada' "}
+  			<div class="alert alert-success" role="alert">Senha alterada com sucesso!!!</div>
+  	{else}
+  			<div class="alert alert-danger" role="alert">{$error}</div>
+  	{/if}		
+ {else}
+		 <div> </div>
+ {/if}	
+
+	
+
+
+			
+			<input type="text" id="iduser" name="iduser" hidden value="{$user.iduser}"><br>
+
+			<label>Nome:</label>
+			<input class="inputsUser" type="text" id="desperson" name="desperson" value="{$user.desperson}" maxlength="50" required><br>
+
+
+			<label>Login:</label>
+			<input class="inputsUser" type="text" id="deslogin" name="deslogin" value="{$user.deslogin}" maxlength="50" required><br>
+
+
+
+
+			<label>Email:</label>
+			<input class="inputsUser" type="email" id="desemail" name="desemail" value="{$user.desemail}" maxlength="100" required><br>
+
+			<label>Telefone:</label>
+				<input class="inputsUser" type="tel" id="nrphone" name="nrphone" value="{$user.nrphone}"   maxlength="14" ><br>
+
+			<div>
+				Administrador:
+				<input type="radio" id="inadmin" name="inadmin" value="1"  {if="$user.inadmin == 1"}checked{/if} >
+				<label for="inadmin">Sim</label>
+				<input type="radio" id="inadmin" name="inadmin" value="0"   {if="$user.inadmin == 0"}checked{/if} >
+				<label for="inadmin">Não</label>
+		    </div>
+
+		     <div>
+				Status:
+				<input type="radio" id="status_user" name="status_user"  value="ativo"  {if="$user.status_user == 'ativo' "}checked{/if} >
+				<label for="status_user">Ativo</label>
+				<input type="radio" id="status_user" name="status_user" value="inativo"  {if="$user.status_user == 'inativo' "}checked{/if} >
+				<label for="status_user">Inativo</label>
+		  </div>
+
+
+
+
+
+
+
+
+
+
+
+<input id='btcadUser' type="submit" value="Alterar">
+<input id='btopenModalSenha'  onclick="open_modalSenha()"  type="button" value="Alterar Senha">
+
+	</fieldset>
+
+
+	
+
+
+
+
+</form>
+
+
+
+
+</div>
+
+
+
+

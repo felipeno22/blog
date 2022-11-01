@@ -1,0 +1,53 @@
+
+
+
+body {
+  
+   background-image: url("../../img/fundopmcg.jpg");
+  
+}
+
+
+
+
+#linkHeader:hover{
+  background-color: green;
+  padding-inline: 1em;
+   text-decoration: none;
+  border-radius: 999em;
+  color: #fff;
+}
+
+
+#linkHeader--is-active{
+  background-color: green;
+  padding-inline: 1em;
+   text-decoration: none;
+  border-radius: 999em;
+  color: #fff;
+}
+
+
+
+
+#header{
+
+  background-color:#B8AEA4;
+  padding:5px;"
+
+
+}
+
+
+.navbar{
+display:flex;
+flex-direction:row;
+
+
+}
+
+
+#linkHeader{
+  color:black;
+  
+}

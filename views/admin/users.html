@@ -1,0 +1,107 @@
+
+
+<div id="divBtVoltar">
+<input type="button" id="btlista" name="idlista"  value=" voltar" onclick="voltarParaPainel()" />
+
+<div style="width:400px"></div>
+ 
+ <h2 id="titleList">
+    Lista de Usuários
+  </h2>
+
+
+</div>
+
+<br>
+
+<div class="tela_lista">
+
+ 
+
+  <div class="divsearch">
+                <form id="formFilter" action="/users">
+                 
+                      <label for="inputbuscaUser">Descrição:</label>
+                    <input  id="inputbuscaUser" type="text" name="search"  placeholder="buscador" value="{$search}">
+
+                     <label for="status">Status:</label>
+
+                    <select class='status' name="status" id="status">
+                           <option {if="$status=='todos'"}selected{/if} value="todos">Todos</option>
+                          <option  {if="$status=='ativo'"}selected{/if} value="ativo">Ativo</option>
+                          <option   {if="$status=='inativo'"}selected{/if} value="inativo">Inativo</option>
+                    </select> 
+
+
+                     <label for="admin">Administrador:</label>
+                    <select class='admin' name="admin" id="admin">
+                          <option {if="$admin=='todos'"}selected{/if} value="todos">Todos</option>
+                          <option {if="$admin=='1'"}selected{/if} value="1">Sim</option>
+                          <option  {if="$admin=='0'"}selected{/if} value="0">Não</option>
+                    </select> 
+
+
+                    <button id="btbusca" type="submit" ><i class="fa fa-search">buscar</i></button>
+                    
+                  
+                </form>
+     </div>  
+
+<input  id="inputTotalPages" type="text"   hidden value="{$totalPages}">
+
+  <a id="insertLink"  href="/user/insert">Cadastrar Usuário</a>
+   <div class="box-tools">
+                
+
+  
+  {if="$error!= '' "}
+  
+      
+        <div class="alert alert-danger" role="alert">{$error}</div>
+       
+ {else}
+     <div> </div>
+ {/if}  
+    
+
+<!-- Main content -->
+
+ <div id='divIconLoading'>
+   <div class="c-loader"></div>  
+
+ </div> 
+              <table id="tb" >
+                <thead>
+                  <tr>
+                    <th hidden style="width: 10px">ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Login</th>
+                     <th>Status</th>
+                     <th>Admin</th>
+                    <th  style="width: 200px;">Opções</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   
+                   
+                 
+                </tbody>
+              </table>
+
+               
+
+<!-- /.content -->
+</div>
+
+ <!-- /.box-body -->
+             <div class="divpagination">
+              <ul class="ulpagination">
+
+               
+              </ul>
+            </div>
+<!-- /.content-wrapper -->
+
+
+ <script  src="../res/jqueryAjax/usersJqueryAjax.js" ></script> 

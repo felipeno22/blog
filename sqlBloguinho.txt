@@ -1,0 +1,203 @@
+/*tables creates*/
+
+
+
+
+
+CREATE TABLE `person` (
+  `idperson` int(11) NOT NULL AUTO_INCREMENT,
+  `desperson` varchar(64) DEFAULT NULL,
+  `desemail` varchar(128) DEFAULT NULL,
+  `nrphone` varchar(45) DEFAULT NULL,
+  `dtregister` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`idperson`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+
+
+
+CREATE TABLE `user` (
+  `iduser` int(11) NOT NULL AUTO_INCREMENT,
+  `idperson` int(11) NOT NULL,
+  `deslogin` varchar(64) DEFAULT NULL,
+  `despassword` varchar(256) DEFAULT NULL,
+  `inadmin` tinyint(4) DEFAULT NULL,
+  `status_user` varchar(45) DEFAULT NULL,
+  `dtregister` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`iduser`),
+  KEY `fk_users_persons_idx` (`idperson`),
+  CONSTRAINT `fk_users_persons` FOREIGN KEY (`idperson`) REFERENCES `person` (`idperson`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+ 
+CREATE TABLE `blog` (
+  `idblog` int(11) NOT NULL AUTO_INCREMENT,
+  `name_blog` text DEFAULT NULL,
+  `iduser` int(11) NOT NULL,
+  `dtregister` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`idblog`),
+  KEY `fk_blogs_users_idx` (`iduser`),
+  CONSTRAINT `fk_blogs_users` FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+
+
+
+
+CREATE TABLE `content_blog` (
+  `idcontent` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text DEFAULT NULL,
+  `content_text` longtext DEFAULT NULL,
+  `dtcontent` date DEFAULT NULL,
+  `idblog` int(11) NOT NULL,
+  `imgcontent` varchar(65) DEFAULT NULL,
+  `dtregister` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`idcontent`),
+  KEY `fk_contents_blogs_idx` (`idblog`),
+  CONSTRAINT `fk_contents_blogs` FOREIGN KEY (`idblog`) REFERENCES `blogs` (`idblog`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `comments_blog` (
+  `idcomment` int(11) NOT NULL AUTO_INCREMENT,
+   `name`  varchar(45) NULL,
+  `comment` text DEFAULT NULL,
+  `idcontent` int(11) NOT NULL,
+   `parents` int(11) NULL,		
+  `dtregister` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`idcomment`),
+  KEY `fk_comments_contents_idx` (`idcontent`),
+  CONSTRAINT `fk_comments_contents` FOREIGN KEY (`idcontent`) REFERENCES `content_blog` (`idcontent`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+/*end tables create*/
+
+CREATE TABLE `responses_comments_blog` (
+  `idresponsecomment` int(11) NOT NULL AUTO_INCREMENT,
+   `name`  varchar(45) NULL,
+  `response` text DEFAULT NULL,
+  `idcomment` int(11) NOT NULL,
+  `dtregister` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`idresponsecomment`),
+  KEY `fk_responsescomments_comments_idx` (`idcomment`),
+  CONSTRAINT `fk_responsescomments_comments` FOREIGN KEY (`idcomment`) REFERENCES `comments_blog` (`idcomment`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+/*end tables create*/
+
+
+/*procedures create*/
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_usersupdate_save`(
+piduser INT,
+pdesperson VARCHAR(64), 
+pdeslogin VARCHAR(64), 
+pdesemail VARCHAR(128), 
+pnrphone varchar(45),
+pstatus_user varchar(45),
+pinadmin TINYINT)
+BEGIN
+ DECLARE vidperson INT;
+    
+	SELECT idperson INTO vidperson
+    FROM user
+    WHERE iduser = piduser;
+    
+    UPDATE person
+    SET 
+		desperson = pdesperson,
+        desemail = pdesemail,
+        nrphone = pnrphone
+	WHERE idperson = vidperson;
+    
+    UPDATE user
+    SET
+		deslogin = pdeslogin,
+          inadmin= pinadmin,
+           status_user = pstatus_user
+	WHERE iduser = piduser;
+    
+    SELECT * FROM user a INNER JOIN person b USING(idperson) WHERE a.iduser = piduser;
+    
+END$$
+DELIMITER ;
+
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_contents_save`(
+ptitle text, 
+pcontent_text longtext, 
+pdtcontent datetime,
+pimgcontent varchar(64), 
+piduser int)
+BEGIN
+
+ 
+    
+	INSERT INTO content_blog (title,content_text,dtcontent,imgcontent,iduser)
+    VALUES(ptitle,pcontent_text,pdtcontent,pimgcontent,piduser);
+    
+    SELECT idcontent FROM content_blog   WHERE idcontent = LAST_INSERT_ID();
+    
+
+END$$
+DELIMITER ;
+
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_contentsupdate_save`(
+pidcontent INT,
+ptitle text, 
+pcontent_text longtext, 
+pdtcontent date, 
+pimgcontent varchar(64), 
+piduser int)
+BEGIN
+    
+    UPDATE content_blog
+    SET 
+		title= ptitle,
+		 content_text= pcontent_text,
+        dtcontent = pdtcontent,
+        imgcontent = pimgcontent,
+        iduser = piduser
+	WHERE idcontent = pidcontent;
+    
+
+    SELECT * FROM content_blog   WHERE idcontent = pidcontent;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_contents_delete`(
+pidcontent INT
+)
+BEGIN
+    
+ 
+    
+    /*SET FOREIGN_KEY_CHECKS = 0;*/
+	
+   
+    DELETE FROM content_blog WHERE idcontent = pidcontent;
+ 
+	
+END$$
+DELIMITER ;
+
+
+/*exemplo de alterando nome campo e indice de fk*/
+
+
+ALTER TABLE `bloguinho`.`content_blog` 
+CHANGE COLUMN `iduser` `idblog` INT(11) NOT NULL ,
+ADD INDEX `fk_contents_blogs_idx` (`idblog` ASC) ;
+
+ALTER TABLE `bloguinho`.`content_blog` 
+ADD CONSTRAINT `fk_contents_blogs`
+  FOREIGN KEY (`idblog`)
+  REFERENCES `bloguinho`.`blogs` (`idblog`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+

@@ -1,0 +1,66 @@
+<div id="container_admin">
+    <article>
+
+    <div id="div_content" >
+
+             <div style="display:flex;flex-direction:column;align-content: center;align-items: center;grid-gap:1em;">  
+                    <div id="divTitleDate" >
+                        <h2 id="title">{$cont.title}</h2>
+                        <div id="divDate"><small >{$cont.dtcontent}</small><div ></div></div>
+                    </div>
+
+                    <div id="img_blog" >
+                        <img src="../..{$cont.imgcontent}" alt="not found" width="100%">
+                        <br>
+                        <div style="background-color:gray;border:1px solid black;"  {if="$cont.legendimg==''"}hidden{else}{/if} ><small style="font: normal 7pt Arial;padding:1px;" title="{$cont.legendimg}">{$cont.legendimg}</small></div>
+                    </div>
+
+            </div>
+    <br>
+
+            <p id="text_content">{$cont.content_text}</p>
+
+             <div style="background:gray;padding:15px;">
+
+                <p style="color:black;"><a href="" style="color: white;">{$cont.deslogin}</a> às {$cont.hora}</p>
+
+            </div>
+ 
+            <div id="com">
+
+                <h2 id="title_comments">Comentários:</h2><br>
+    
+                <!--Aqui é o onde o jquery insere os comentários-->
+
+            </div>
+    <br>
+
+            <form id="formInsertComments" action="/insertComments">
+                    <div id="div_insert_comment">
+
+                                <p  id="idpcomment" hidden >Deixe seu comentário aqui:</p>
+                                <input id="name" type="text" name="name" placeholder="Digite seu nome"  hidden>
+                                <br>
+                                <div id="add_comments" >
+                                            <div id="divimgaddcomm"><img id="imgcomm" src="../../res/img/icon_anonimous.png"  alt="not found" ></div>
+                                            <input  type="text" id="input_comment" placeholder="digite um comentário" onclick="focus_input()" >
+    
+                                </div>
+                                <br>
+                                <input id="idcontent" name="idcontent" hidden  type="text" readonly value="{$cont.idcontent}">
+                                <input id="btpublicar"  hidden type="submit" value="publicar">
+                                <div id="infoCommentsAdd" class="alert alert-info" role="alert" hidden>
+                                            Seu comentário será analisado pelo administrador. Em breve irá ser visualizado aqui.
+                                </div>
+                    </div>
+            </form>        
+     </div>     
+
+
+</article> 
+
+</div>
+
+
+<script  src="../../res/jqueryAjax/commentsJqueryAjax.js" ></script> 
+ 

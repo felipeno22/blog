@@ -1,0 +1,200 @@
+
+
+$(document).ready(function() {
+
+
+           var totalPages=$("#inputTotalPages").val();
+
+           console.log($("#inputTotalPages").val());
+           var idblog= document.getElementById("idblog").value;
+
+           
+           if(totalPages < 5)
+            contents_panel_adm(idblog,1,totalPages,0)
+           else
+            contents_panel_adm(idblog,1,5,0)
+      
+        
+          
+        });
+
+
+
+
+
+
+function contents_panel_adm(idblog,page,aux,aux2){
+  
+
+  
+  $.ajax({
+      url: "/load_contents",
+      method:"GET",
+       dataType: "json",
+        data: { idblog: idblog ,page: page, aux: aux, aux2: aux2}
+     
+  }).done(function(result) {
+    
+     console.log(result); 
+
+
+       $(".content").remove();
+
+
+       $(".e").remove();
+
+      for(var i=0; i < result['contents'].length; i++){
+
+
+        var b= `<div class="content"  >
+
+                     <a href="/text_content/${result['contents'][i]['idcontent']}"><span> ${result['contents'][i]['dtcontent']}</span><br><br>  
+                     <h3> ${result['contents'][i]['title']}</h3>
+                     <div id="text_content"  >
+                        <div id="text_blog" >${result['contents'][i]['content_text']}</div>
+                        <div id="icon_text_blog" ><strong>></strong></div>
+                    </div></a>
+
+                     <div id="divtotalcomm${result['contents'][i]['idcontent']}">
+           
+                          
+                            <a id='lbltotalcomm${result['contents'][i]['idcontent']}' href="/text_content/${result['contents'][i]['idcontent']}">comentários</a>
+                    </div>
+
+             
+           </div><br class='e'>`;
+
+
+
+
+         $("#div_content #listcontents").append(b);
+
+
+         totalcommsadm(result['contents'][i]['idcontent'],`/text_content/${result['contents'][i]['idcontent']}`)
+
+         
+    
+      }
+
+
+    $(".ulpagination li").remove();
+      for(var a=0; a < result['pages'].length; a++){
+
+        if(a==0 && (result['previus'][0])){
+
+          $(".ulpagination ").append('<li '+result['hidden_prev']+' ><a class="page" onclick="page(('+result['pages'][a].page+'-1),'+result['previus'][0].aux+','+result['previus'][0].aux2+')" >anterior</a></li>');
+        }
+        
+
+        /*pega a pagina inicial  e ultima*/
+         var ultimo_pag= result['pages'][result['pages'].length-1].page;
+      var primeiro_pag=(result['pages'][0].page-1);
+
+     
+        $(".ulpagination ").append('<li><a class="page" onclick="page('+result['pages'][a].page+','+ultimo_pag+','+primeiro_pag+')">'+result['pages'][a].page+'</a></li>');
+        
+        if(a==(result['pages'].length-1) && (result['next'][0])){
+             
+
+             
+          
+          
+            $(".ulpagination ").append('<li '+result['hidden_next']+' ><a class="page" onclick="page(('+result['pages'][a].page+'+1),'+result['next'][0].aux+','+result['next'][0].aux2+')" >proximo</a></li>');
+
+
+          
+
+          
+      }
+
+
+
+
+      }
+    
+    
+
+
+
+
+  });
+
+    
+
+}
+
+function totalcommsadm(idcontent,url){
+  //var idblog= document.getElementById("idblog").value;
+
+  
+ 
+
+  $.ajax({
+      url: "/loadNumCommentsByContents",
+      method:"POST",
+       dataType: "json",
+      data: { idcontent: idcontent}
+     
+     
+  }).done(function(result) {
+    
+     
+
+     
+            console.log(result); 
+
+
+
+       $(`#lbltotalcomm${idcontent}`).remove();
+
+
+
+      for(var b=0; b < result.length; b++){
+
+      
+
+
+           var c=` <a id='lbltotalcomm${idcontent}' href="${url}"> ${result[b]['totalcomm']} comentários</a>`;
+
+
+
+
+         $(`#divtotalcomm${idcontent}`).append(c);
+    
+      }
+
+
+  
+
+
+  });
+
+    
+
+
+
+
+
+
+
+
+}
+
+
+
+/*funcao que popula table conforme a pagina clicada*/
+function page(e,aux,aux2){
+
+   
+        
+
+          var idblog= document.getElementById("idblog").value;
+
+           
+            contents_panel(idblog,e,aux,aux2)
+   
+
+}
+
+/*end funcao que popula table conforme a pagina clicada*/
+
